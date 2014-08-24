@@ -16,16 +16,17 @@ class ViewController: UIViewController {
     @IBOutlet var tipControl : UISegmentedControl
     @IBOutlet var twoLabel : UILabel
     @IBOutlet var threeLabel : UILabel
+    @IBOutlet var billView : UIView
+    @IBOutlet var totalView : UIView
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tipLabel.text = " "
         totalLabel.text = " "
-        self.tipLabel.alpha = 0
-        self.totalLabel.alpha = 0
-        self.twoLabel.alpha = 0
-        self.threeLabel.alpha = 0
+        self.totalView.alpha = 0
+        self.billView.center = CGPoint(x: 160, y: 200);
+        self.totalView.center = CGPoint(x: 160, y: 525);
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,16 +54,22 @@ class ViewController: UIViewController {
         twoLabel.text = String(format: "$%.2f", divtwo)
         threeLabel.text = String(format: "$%.2f", divthree)
         
-        // Optionally initialize the property to a desired starting value
-        UIView.animateWithDuration(0.9, animations: {
-            // This causes first view to fade in and second view to fade out
-            self.tipLabel.alpha = 1
-            self.totalLabel.alpha = 1
-            self.twoLabel.alpha = 1
-            self.threeLabel.alpha = 1
         
+        if billField.text.isEmpty {
+            
+        UIView.animateWithDuration(0.7, animations: {
+            self.billView.center = CGPoint(x: 160, y: 200);
+            self.totalView.center = CGPoint(x: 160, y: 525);
+            self.totalView.alpha = 0
             })
-    
+        }
+        else{
+        UIView.animateWithDuration(0.7, animations: {
+            self.billView.center = CGPoint(x: 160, y: 100);
+            self.totalView.center = CGPoint(x: 160, y: 400);
+            self.totalView.alpha = 1
+            })
+        }
     }
     @IBAction func onTap(sender : AnyObject) {
     view.endEditing(true)
