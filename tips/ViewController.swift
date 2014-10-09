@@ -10,20 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
                             
-    @IBOutlet var tipLabel : UILabel
-    @IBOutlet var billField : UITextField
-    @IBOutlet var totalLabel : UILabel
-    @IBOutlet var tipControl : UISegmentedControl
-    @IBOutlet var twoLabel : UILabel
-    @IBOutlet var threeLabel : UILabel
-    @IBOutlet var billView : UIView
-    @IBOutlet var totalView : UIView
+    @IBOutlet var tipLabel : UILabel!
+    @IBOutlet var billField : UITextField!
+    @IBOutlet var totalLabel : UILabel!
+    @IBOutlet var tipControl : UISegmentedControl!
+    @IBOutlet var twoLabel : UILabel!
+    @IBOutlet var threeLabel : UILabel!
+    @IBOutlet var billView : UIView!
+    @IBOutlet var totalView : UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tipLabel.text = " "
         totalLabel.text = " "
+        
+        // set the start position and alpha.
         self.totalView.alpha = 0
         self.billView.center = CGPoint(x: 160, y: 200);
         self.totalView.center = CGPoint(x: 160, y: 525);
